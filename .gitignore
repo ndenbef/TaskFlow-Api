@@ -29,10 +29,14 @@ project.fragment.lock.json
 artifacts/
 
 # Visual Studio
-.vs/
+**/.vs
 *.vsidx
 *.suo
 *.user
+
+# Sensitive configuration files
+appsettings.Development.json
+appsettings.json.user
 
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
