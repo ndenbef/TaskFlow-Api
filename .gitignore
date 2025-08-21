@@ -35,8 +35,8 @@ artifacts/
 *.user
 
 # Sensitive configuration files
-appsettings.Development.json
-appsettings.json.user
+**.appsettings.Development.json
+**.appsettings.json.user
 
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt

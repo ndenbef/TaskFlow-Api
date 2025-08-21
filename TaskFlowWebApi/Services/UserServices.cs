@@ -1,8 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using MongoDB.Driver;
-using MongoDB.Driver.Linq;
+//using MongoDB.Driver;
+//using MongoDB.Driver.Linq;
 using TaskFlowWebApi.Models;
+
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
 
 namespace TaskFlowWebApi.Services
 {
@@ -10,7 +15,7 @@ namespace TaskFlowWebApi.Services
     {
         private readonly UserManager<Users> _userManager;
 
-        private readonly IMongoCollection<Users> _usersCollection;
+        //private readonly IMongoCollection<Users> _usersCollection;
 
 
         public UserServices(
@@ -30,12 +35,14 @@ namespace TaskFlowWebApi.Services
 
         }
 
-        public async Task<List<Users>> GetAsync() =>
-            await _userManager.Users.ToListAsync();
+        public Task<List<Users>> GetAsync() =>
+            Task.FromResult(_userManager.Users.ToList());
 
         public async Task<IdentityResult> CreateAsync(Users newUserCreated, string password) =>
             await _userManager.CreateAsync(newUserCreated, password);
 
+        public async Task<Users> GetUserAsync(string Id) =>
+            await _userManager.FindByIdAsync(Id);
 
     }
 }

@@ -69,8 +69,33 @@ namespace TaskFlowWebApi.Controllers
                 return BadRequest($"An error occured: { ex.Message}");
  
             };
+        }
+
+        [HttpGet("GetUserbyId")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetUsers))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> UserbyId(string Id)
+        {
+            if(Id != null)
+            {
+                var result = await _userService.GetUserAsync(Id);
+
+                if (result != null)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return NotFound("User not found");
+                }
+            }else
+            {
+                return BadRequest("Please choose a user");
+            }
             
-            
-        }       
+        }
     }
 }

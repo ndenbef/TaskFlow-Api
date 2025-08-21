@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskFlowWebApi", "TaskFlowWebApi\TaskFlowWebApi.csproj", "{C7DD0D58-4FEA-41B5-A43D-36326C00FCAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskFlowWebApi.Tests", "TaskFlowWebApi.Tests\TaskFlowWebApi.Tests.csproj", "{1F78C0CD-9C64-4AFC-A90F-82ED4ED4C331}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C7DD0D58-4FEA-41B5-A43D-36326C00FCAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7DD0D58-4FEA-41B5-A43D-36326C00FCAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7DD0D58-4FEA-41B5-A43D-36326C00FCAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F78C0CD-9C64-4AFC-A90F-82ED4ED4C331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F78C0CD-9C64-4AFC-A90F-82ED4ED4C331}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F78C0CD-9C64-4AFC-A90F-82ED4ED4C331}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F78C0CD-9C64-4AFC-A90F-82ED4ED4C331}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
