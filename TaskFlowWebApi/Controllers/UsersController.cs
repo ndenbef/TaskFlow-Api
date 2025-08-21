@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
 using TaskFlowWebApi.Data;
 using TaskFlowWebApi.Models;
 using TaskFlowWebApi.Services;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TaskFlowWebApi.Controllers
 {
@@ -22,6 +24,7 @@ namespace TaskFlowWebApi.Controllers
 
             var userFound = users.Select(u => new GetUsers
             {
+                Id = u.Id,
                 FullName = u.FullName,
                 Username = u.UserName,
                 Email = u.Email,
@@ -97,5 +100,36 @@ namespace TaskFlowWebApi.Controllers
             }
             
         }
+
+        [HttpPost("login")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> LoginAsync([FromBody] Login login)
+        {
+
+            try
+            {
+                var result = await _userService.LoginUserAsync(login);
+                
+
+                if (result != null)
+                {
+                    var handler = new JwtSecurityTokenHandler();
+                    var token = handler.ReadJwtToken(result);
+
+                    return Ok(new { message = "User Logged Sucessfully!", token = new JwtSecurityTokenHandler().WriteToken(token) });
+                }
+                return BadRequest("Nom d'utilisateur ou Mot de Passe Invalide");
+                }catch(Exception ex)
+                    {
+                        return BadRequest($"An error occured : {ex.Message}");
+
+            }
+
+
+
+
+}
     }
 }
