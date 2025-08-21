@@ -47,7 +47,7 @@ namespace TaskFlowWebApi.Services
         public async Task<IdentityResult> CreateAsync(Users newUserCreated, string password) =>
             await _userManager.CreateAsync(newUserCreated, password);
 
-        public async Task<Users> GetUserAsync(string Id) =>
+        public async Task<Users?> GetUserAsync(string Id) =>
             await _userManager.FindByIdAsync(Id);
 
         public async Task<string?> LoginUserAsync(Login login)
@@ -68,11 +68,10 @@ namespace TaskFlowWebApi.Services
 
                 var token = new JwtSecurityToken(
                     issuer: _configuration["Jwt:Issuer"],
-                    audience: null,
                     expires: DateTime.Now.AddMinutes(double.Parse(_configuration["Jwt:ExpiryMinutes"]!)),
                     claims: authClaims,
                     signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!)),
-                    SecurityAlgorithms.HmacSha256)
+                    SecurityAlgorithms.HmacSha256Signature)
                     );
 
                 return new JwtSecurityTokenHandler().WriteToken(token);

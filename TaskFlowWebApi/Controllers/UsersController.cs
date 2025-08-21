@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using TaskFlowWebApi.Data;
@@ -18,6 +19,7 @@ namespace TaskFlowWebApi.Controllers
             _userService = userService;
 
         [HttpGet]
+        [Authorize]
         public async Task<List<GetUsers>> GetUsers() 
         {
             var users = await _userService.GetAsync();
@@ -115,17 +117,16 @@ namespace TaskFlowWebApi.Controllers
 
                 if (result != null)
                 {
-                    var handler = new JwtSecurityTokenHandler();
-                    var token = handler.ReadJwtToken(result);
 
-                    return Ok(new { message = "User Logged Sucessfully!", token = new JwtSecurityTokenHandler().WriteToken(token) });
+                    return Ok(new { message = "User Logged Sucessfully!", token = result });
                 }
                 return BadRequest("Nom d'utilisateur ou Mot de Passe Invalide");
-                }catch(Exception ex)
-                    {
-                        return BadRequest($"An error occured : {ex.Message}");
-
             }
+            catch(Exception ex)
+                {
+                    return BadRequest($"An error occured : {ex.Message}");
+
+                }
 
 
 
