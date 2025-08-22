@@ -45,6 +45,7 @@ namespace TaskFlowWebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Register register)
         {
+
             var newUser = new Users
             {
                 FullName = register.FullName,
@@ -57,7 +58,7 @@ namespace TaskFlowWebApi.Controllers
                 var result = await _userService.CreateAsync(newUser, register.Password);
 
                 if (result.Succeeded)
-                    return Ok("User created successfully");
+                    return Created();
                 else 
                 {
                     var errors = result.Errors.Select(e => e.Description);
