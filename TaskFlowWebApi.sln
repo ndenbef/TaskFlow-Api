@@ -11,6 +11,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{46D49774-1AC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FEF425B2-C95F-4430-863B-62734F3640D5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskFlowProjectApi", "TaskFlowProjectApi\TaskFlowProjectApi.csproj", "{762A3694-3477-4767-A176-840AF321A5DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskFlow.Security.Shared", "TaskFlow.Security.Shared\TaskFlow.Security.Shared.csproj", "{8368648A-CFEC-4149-BE06-2B1A0461FEC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kubernetes-config", "kubernetes-config", "{613367C9-261C-402D-B5C9-2A7088F78DE4}"
+	ProjectSection(SolutionItems) = preProject
+		project-deployment.yaml = project-deployment.yaml
+		project-service.yaml = project-service.yaml
+		user-deployment.yaml = user-deployment.yaml
+		user-service.yaml = user-service.yaml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskFlowTaskApi", "TaskFlowTaskApi\TaskFlowTaskApi.csproj", "{290769B1-B928-48C5-96D1-CF986B48BADC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +39,18 @@ Global
 		{1F78C0CD-9C64-4AFC-A90F-82ED4ED4C331}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F78C0CD-9C64-4AFC-A90F-82ED4ED4C331}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F78C0CD-9C64-4AFC-A90F-82ED4ED4C331}.Release|Any CPU.Build.0 = Release|Any CPU
+		{762A3694-3477-4767-A176-840AF321A5DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{762A3694-3477-4767-A176-840AF321A5DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{762A3694-3477-4767-A176-840AF321A5DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{762A3694-3477-4767-A176-840AF321A5DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8368648A-CFEC-4149-BE06-2B1A0461FEC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8368648A-CFEC-4149-BE06-2B1A0461FEC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8368648A-CFEC-4149-BE06-2B1A0461FEC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8368648A-CFEC-4149-BE06-2B1A0461FEC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{290769B1-B928-48C5-96D1-CF986B48BADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{290769B1-B928-48C5-96D1-CF986B48BADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{290769B1-B928-48C5-96D1-CF986B48BADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{290769B1-B928-48C5-96D1-CF986B48BADC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +58,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C7DD0D58-4FEA-41B5-A43D-36326C00FCAE} = {46D49774-1ACD-4184-8918-6043E42BF865}
 		{1F78C0CD-9C64-4AFC-A90F-82ED4ED4C331} = {FEF425B2-C95F-4430-863B-62734F3640D5}
+		{762A3694-3477-4767-A176-840AF321A5DF} = {46D49774-1ACD-4184-8918-6043E42BF865}
+		{8368648A-CFEC-4149-BE06-2B1A0461FEC0} = {46D49774-1ACD-4184-8918-6043E42BF865}
+		{290769B1-B928-48C5-96D1-CF986B48BADC} = {46D49774-1ACD-4184-8918-6043E42BF865}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {92F219DC-7B75-47B5-ADA9-C88E9E7BAE8A}
