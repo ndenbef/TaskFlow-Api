@@ -8,6 +8,7 @@ namespace TaskFlowProjectApi.Models
     {
         [BsonId]
         public Guid Id { get; set; } = Guid.Empty;
+        public string ParentProject { get; set; } = string.Empty;
 
         public required string Title { get; set; }
         public string Description { get; set; } = string.Empty;

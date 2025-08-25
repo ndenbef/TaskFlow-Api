@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson.Serialization.Conventions;
+using MongoDB.Driver;
 using TaskFlow.Security.Shared;
 using TaskFlowProjectApi.Data;
 using TaskFlowProjectApi.Models;
@@ -37,6 +38,7 @@ namespace TaskFlowProjectApi.Controllers
                     var newProject = new Projects
                     {
                         Id = Guid.NewGuid(),
+                        ParentProject = project.ParentProject,
                         Title = project.Title,
                         Description = project.Description,
                         Deadline = project.Deadline,
@@ -130,9 +132,30 @@ namespace TaskFlowProjectApi.Controllers
         }
 
         [HttpPatch]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType (StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> AddProjectMember([FromBody] AddProjectMember projectMember)
+        {
+            try
+            {
+                var result = await _projectServices.getMyProjectAsync(Guid.Parse(projectMember.Id));
+                if(result != null)
+                {
+                    return NotFound("Project not found!!");
+                }
+                string updatedAllowedHosts = string.IsNullOrEmpty(result.AllowedHosts) ? projectMember.AllowedHosts : $"{result.AllowedHosts},{projectMember.AllowedHosts}";
+
+                var update = Builders<Projects>.Update.Set(u => u.AllowedHosts, updatedAllowedHosts);
+
+                await _projectServices.updateProjectAsync(Guid.Parse(projectMember.Id), updatedAllowedHosts);
+
+                return NoContent();
+            }catch(Exception ex)
+            {
+                return BadRequest($"Une erreur s'est produite {ex.Message}");
+            }
+        }
 
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

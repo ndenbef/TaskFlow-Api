@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FEF425B2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskFlowProjectApi", "TaskFlowProjectApi\TaskFlowProjectApi.csproj", "{762A3694-3477-4767-A176-840AF321A5DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskFlow.Security.Shared", "TaskFlow.Security.Shared\TaskFlow.Security.Shared.csproj", "{8368648A-CFEC-4149-BE06-2B1A0461FEC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskFlow.Security.Shared", "TaskFlow.Security.Shared\TaskFlow.Security.Shared.csproj", "{8368648A-CFEC-4149-BE06-2B1A0461FEC0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kubernetes-config", "kubernetes-config", "{613367C9-261C-402D-B5C9-2A7088F78DE4}"
 	ProjectSection(SolutionItems) = preProject
@@ -23,7 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kubernetes-config", "kubern
 		user-service.yaml = user-service.yaml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskFlowTaskApi", "TaskFlowTaskApi\TaskFlowTaskApi.csproj", "{290769B1-B928-48C5-96D1-CF986B48BADC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskFlowNotificationApi", "TaskFlowTaskApi\TaskFlowNotificationApi.csproj", "{290769B1-B928-48C5-96D1-CF986B48BADC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotAPIGateway", "OcelotAPIGateway\OcelotAPIGateway.csproj", "{5CBC69FF-18B5-4942-A2F5-48C0F7AE6F66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{290769B1-B928-48C5-96D1-CF986B48BADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{290769B1-B928-48C5-96D1-CF986B48BADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{290769B1-B928-48C5-96D1-CF986B48BADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CBC69FF-18B5-4942-A2F5-48C0F7AE6F66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CBC69FF-18B5-4942-A2F5-48C0F7AE6F66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CBC69FF-18B5-4942-A2F5-48C0F7AE6F66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CBC69FF-18B5-4942-A2F5-48C0F7AE6F66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

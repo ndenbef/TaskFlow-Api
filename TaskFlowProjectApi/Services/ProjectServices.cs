@@ -32,8 +32,8 @@ namespace TaskFlowProjectApi.Services
         public async Task<Projects> getMyProjectAsync(Guid id) =>
             await _projectsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-        public async Task updateProjectAsync(Guid id, Projects projectToUpdate) =>
-            await _projectsCollection.ReplaceOneAsync(x => x.Id == id, projectToUpdate);
+        public async Task updateProjectAsync(Guid id, UpdateDefinition<Projects> projectToUpdate) =>
+            await _projectsCollection.UpdateOneAsync(x => x.Id == id, projectToUpdate);
 
         public async Task removeProjectAsync(Guid id) =>
             await _projectsCollection.DeleteOneAsync(x => x.Id == id);
