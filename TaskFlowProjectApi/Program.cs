@@ -4,8 +4,14 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson;
 
 var builder = WebApplication.CreateBuilder(args);
+
+BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+
 
 // Add services to the container.
 

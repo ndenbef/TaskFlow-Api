@@ -6,12 +6,14 @@ namespace TaskFlow.Security.Shared
     {
         public static string? GetUserIdFromToken(string token)
         {
+            var tokenWithoutBearerKeyword = token.Replace("Bearer ","");
+
             var handler = new JwtSecurityTokenHandler();
 
-            var jwtToken = handler.ReadJwtToken(token);
+            var jwtToken = handler.ReadJwtToken(tokenWithoutBearerKeyword);
 
             var userIdClaims = jwtToken.Claims.FirstOrDefault(options =>
-            options.Type == "Id");
+            options.Type == "sub");
 
             return userIdClaims?.Value.ToString();
 

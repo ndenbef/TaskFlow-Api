@@ -26,8 +26,8 @@ namespace TaskFlowProjectApi.Services
         public async Task<List<Projects>> getAllProjectsAsync() =>
             await _projectsCollection.Find(_ => true).ToListAsync();
 
-        public async Task<List<Projects>> getMyProjectsAsync(Guid id) =>
-            await _projectsCollection.Find(x => x.Id == id).ToListAsync();
+        public async Task<List<Projects>> getAllMyProjectsAsync(Guid id) =>
+            await _projectsCollection.Find(x => x.OwnerId == id).ToListAsync();
 
         public async Task<Projects> getMyProjectAsync(Guid id) =>
             await _projectsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
